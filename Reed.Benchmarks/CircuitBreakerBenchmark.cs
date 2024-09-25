@@ -11,7 +11,7 @@ public partial class CircuitBreakerBenchmark
     private const int Iterations = 1;
     
     private IAsyncPolicy _pollyPolicy = Policy
-        .Handle<Exception>()
+        .Handle<Exception>(x => true)
         .AdvancedCircuitBreakerAsync(1, TimeSpan.FromDays(1), int.MaxValue, TimeSpan.FromSeconds(1));   
 
     public CircuitBreakerBenchmark()

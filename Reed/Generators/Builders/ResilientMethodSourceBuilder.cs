@@ -82,7 +82,7 @@ public class ResilientMethodSourceBuilder
         bool hasReturn = !string.IsNullOrEmpty(_returnType);
         
         strbldr.NewLine();
-        strbldr.AppendLine($"public {(_isAsync ? "async " : null)}{(hasReturn ? _returnType : _isAsync ? "Task" : "void")} {customName}({string.Join(", ", _arguments.Select(x => $"{x.argumentType} {x.argumentName}"))})");
+        strbldr.AppendLine($"public partial {(_isAsync ? "async " : null)}{(hasReturn ? _returnType : _isAsync ? "Task" : "void")} {customName}({string.Join(", ", _arguments.Select(x => $"{x.argumentType} {x.argumentName}"))})");
         strbldr.OpenBracket();
         
         if (hasReturn)
